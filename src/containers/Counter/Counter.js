@@ -7,8 +7,14 @@ import CounterOutput from '../../components/CounterOutput/CounterOutput';
 // returns a function
 import {connect} from 'react-redux';
 // import all action types
-import * as actionTypes from '../../store/actions';
+// import * as actionTypes from '../../store/actions/actions';
+// import all action creators
+// import * as actionCreators from '../../store/actions/actionTypes';
 
+// import * as counterActionCreators from  '../../store/actions/counter';
+// import * as resultActionCreators from  '../../store/actions/result';
+
+import  * as actionCreators from '../../store/actions/index';
 
 class Counter extends Component {
     render () {
@@ -44,6 +50,7 @@ const mapStateToProps = state => {
         // give me value of counter from global state 
         // give it to me in form of property name ctr
         // global state. name your give . property
+        // redux thunk can use this property and pass it in getState()
         ctr: state.cter.counter,
         storedResults: state.res.results
     };
@@ -55,12 +62,12 @@ const mapDispatchToProps = dispatch => {
     // pass payload {}/value - user input
     // which should eventually executed to dispatch an action
     return {
-        onIncrementCounter: () => dispatch({type: actionTypes.INCREMENT}),
-        onDecrementCounter: () => dispatch({type: actionTypes.DECREMENT}),
-        onAdd5Counter: () => dispatch({type: actionTypes.ADD5, value:5 }),
-        onSubtract5Counter: () => dispatch({type: actionTypes.SUBTRACT5, value: 5}),
-        onStoreResult: (result) => dispatch({type:actionTypes.STORE_RESULT, result:result}),
-        onDeleteResult: (id) => dispatch({type:actionTypes.DELETE_RESULT, resultElId:id })
+        onIncrementCounter: () => dispatch(actionCreators.increment()),
+        onDecrementCounter: () => dispatch(actionCreators.decrement()),
+        onAdd5Counter: () => dispatch(actionCreators.add5(5)),
+        onSubtract5Counter: () => dispatch(actionCreators.subtract5(5)),
+        onStoreResult: (result) => dispatch(actionCreators.storeResult(result)),
+        onDeleteResult: (id) => dispatch(actionCreators.deleteResult(id))
     };
 };
 

@@ -5,3 +5,9 @@ export const ADD5 = 'ADD5';
 export const SUBTRACT5 = 'SUBTRACT5';
 export const STORE_RESULT = 'STORE_RESULT';
 export const DELETE_RESULT = 'DELETE_RESULT';
+
+
+
+
+
+
